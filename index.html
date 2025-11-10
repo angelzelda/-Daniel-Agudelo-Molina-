@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Snake — Aventura Web (Completo)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container skin-classic" id="root">
+    <header class="header">
+      <div class="logo">S</div>
+      <div>
+        <h1>Snake — Semillero Aventura Web</h1>
+        <p class="muted">Juego completo con niveles, puntuación y guardado del mejor puntaje.</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="left">
+        <div class="hud">
+          <div class="stats">
+            <div class="stat"><span>Puntaje</span><strong id="scoreBoard">0</strong></div>
+            <div class="stat"><span>Mejor</span><strong id="bestBoard">0</strong></div>
+            <div class="stat"><span>Longitud</span><strong id="lengthBoard">1</strong></div>
+            <div class="stat"><span>Nivel</span><strong id="levelBoard">1</strong></div>
+            <div class="stat"><span>Velocidad</span><strong id="speedBoard">150ms</strong></div>
+            <div class="stat"><span>Tiempo</span><strong id="timeBoard">00:00</strong></div>
+          </div>
+
+          <div class="controls">
+            <div class="control-group">
+              <label for="sizeSelect">Tamaño</label>
+              <select id="sizeSelect">
+                <option value="12">12 × 12</option>
+                <option value="15">15 × 15</option>
+                <option value="18">18 × 18</option>
+                <option value="20" selected>20 × 20</option>
+                <option value="24">24 × 24</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="modeSelect">Modo</label>
+              <select id="modeSelect">
+                <option value="walls" selected>Paredes (muere)</option>
+                <option value="wrap">Teletransportarse (atraviesa)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="skinSelect">Skin</label>
+              <select id="skinSelect">
+                <option value="classic" selected>Clásico</option>
+                <option value="neon">Neón</option>
+                <option value="retro">Retro</option>
+                <option value="matrix">Matrix</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="speedSelect">Velocidad</label>
+              <select id="speedSelect">
+                <option value="180">Muy Lenta</option>
+                <option value="140">Lenta</option>
+                <option value="100" selected>Normal</option>
+                <option value="70">Rápida</option>
+                <option value="50">Relámpago</option>
+              </select>
+            </div>
+
+            <div style="display:flex;gap:8px">
+              <button id="startBtn" class="primary">Iniciar</button>
+              <button id="pauseBtn" class="ghost" disabled>Pausa</button>
+              <button id="restartBtn" class="ghost">Reiniciar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="board-wrap">
+          <div id="grid" class="grid" role="grid" aria-label="Tablero de juego"></div>
+        </div>
+
+        <div class="help">Controles: Flechas / WASD para mover — <kbd>Espacio</kbd> pausar — <kbd>R</kbd> reiniciar.</div>
+      </section>
+
+      <aside class="panel">
+        <h3>Información</h3>
+        <div class="section">
+          <p>Este proyecto incluye niveles, obstáculos progresivos y guardado del mejor puntaje usando <code>localStorage</code>. En móvil se soporta swipe y botones táctiles.</p>
+        </div>
+
+        <h3>Controles y estado</h3>
+        <div class="section">
+          <ul>
+            <li>Cambiar tamaño o skin antes de iniciar para ajustar apariencia.</li>
+            <li>El modo <strong>Paredes</strong> hace que choques con la pared terminen el juego.</li>
+            <li>En <strong>Teletransportarse</strong> la serpiente aparece en el lado opuesto.</li>
+          </ul>
+        </div>
+
+        <h3>Accesos rápidos</h3>
+        <div class="section">
+          <p class="muted">Puedes pausar, reiniciar y ver el HUD. Para ver/editar la lógica abre <code>main.js</code>.</p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Mobile controls -->
+    <div class="touch-controls" id="touchControls" aria-hidden="true">
+      <button class="touch-btn" id="touchUp">↑</button>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="touch-btn" id="touchLeft">←</button>
+        <button class="touch-btn" id="touchDown">↓</button>
+        <button class="touch-btn" id="touchRight">→</button>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" aria-hidden="true">
+      <div class="overlay-card">
+        <h2 id="overlayTitle">Game Over</h2>
+        <p>Puntaje: <strong id="overlayScore">0</strong></p>
+        <p>Mejor: <strong id="overlayBest">0</strong></p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button id="overlayRestart" class="primary">Reiniciar</button>
+          <button id="overlayClose" class="ghost">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

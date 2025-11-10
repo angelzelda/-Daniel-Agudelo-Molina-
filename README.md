@@ -1,7 +1,3 @@
-# -angel aristizabal sanchez -
-AVENTURA  WED
-# angel-aristizabal-
-README.MD
 # Snake — Aventura Web (VS Code + GitHub)
 
 Proyecto listo para abrir en Visual Studio Code y subir a GitHub.
@@ -11,7 +7,7 @@ Proyecto listo para abrir en Visual Studio Code y subir a GitHub.
 - `styles.css` — estilos, paleta y skins.
 - `main.js` — lógica del juego (movimiento, niveles, puntaje, obstáculos, guardado en localStorage).
 - `README.md` — este archivo.
-- 
+- `.gitignore` — recomendado.
 
 ## Cómo abrir en VS Code
 1. Abre la carpeta del proyecto en Visual Studio Code.
